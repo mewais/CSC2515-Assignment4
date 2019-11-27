@@ -164,10 +164,8 @@ class Model(object):
         RemX = 1 - X                        # Remainder X (X subtracted from 1)
         RX = np.matmul(R_tran, X)           # R * X
         RRemX = np.matmul(R_tran, RemX)     # R * (1 - X)
-        RX_sum_1d = RX.sum(axis=0)          # Sum of (R * X) over i
-        RRemX_sum_1d = RRemX.sum(axis=0)    # Sum of (R * (1 - X)) over i
-        Numerator = RX_sum_1d + a - 1       # Our Numerator
-        Denominator = Numerator + RRemX_sum_1d + b - 1          # Our Denominator
+        Numerator = RX + a - 1				# Our Numerator
+        Denominator = Numerator + RRemX + b - 1			# Our Denominator
         Theta = Numerator / Denominator     # The Theta value
         return Theta
         #################################################################
